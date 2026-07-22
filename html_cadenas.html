@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 13. Factura
+        let factura = {
+            numero: 1001,
+            cliente: "Daniel Camargo",
+            productos: [
+                { nombre: "Arroz", precio: 4500 },
+                { nombre: "Leche", precio: 3800 },
+                { nombre: "Pan", precio: 2500 }
+            ]
+        };
+
+        let totalFactura = factura.productos.reduce(
+            (suma, producto) => suma + producto.precio,
+            0
+        );
+
+        let htmlFactura = `
+        <div>
+            <h2>Factura No. ${factura.numero}</h2>
+
+            <p><strong>Cliente:</strong> ${factura.cliente}</p>
+
+            <ul>
+            ${factura.productos
+                .map(producto => `<li>${producto.nombre} - $${producto.precio}</li>`)
+                .join("")}
+            </ul>
+
+            <h3>Total: $${totalFactura}</h3>
+        </div>
+        `;
+
+        console.log(htmlFactura);
+
+        // Mostrar la factura en la página
+        document.body.innerHTML += htmlFactura;
+
+    </script>
+</body>
+</html>
